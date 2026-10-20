@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="A small, quiet crossing. An offline interactive poem, from midnight to morning.">
+  <title>Night crossing · a small place to be</title>
+  <style>
+    :root { color-scheme: dark; font-family: Georgia, 'Times New Roman', serif; background: #091820; color: #f3e6cc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 280px; }
+    main { max-width: 1440px; margin: auto; padding: clamp(24px, 5vw, 72px); }
+    .eyebrow, .folio, label, button, .scale, footer, .motion-note {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    header { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; }
+    .eyebrow, .folio { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #bbc9c8; }
+    .folio { white-space: nowrap; }
+    h1 { font-weight: normal; letter-spacing: -.045em; font-size: clamp(48px, 8vw, 104px); margin: 22px 0 14px; line-height: 1; }
+    .intro { font-size: clamp(17px, 2vw, 21px); line-height: 1.6; color: #bbc9c8; margin: 0 0 32px; }
+    figure { margin: 0; position: relative; border: 1px solid #47616a; overflow: hidden; background: #102631; }
+    svg { display: block; width: 100%; height: auto; }
+    figcaption { position: absolute; top: 20px; left: 24px; font: 11px ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; color: #e2e9e5; }
+    .below { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-top: 30px; }
+    .poem { min-height: 155px; }
+    .chapter { color: #bac8c7; font: 11px ui-sans-serif, system-ui, sans-serif; letter-spacing: .15em; text-transform: uppercase; margin: 0 0 14px; }
+    .verse { font-size: clamp(20px, 2.25vw, 28px); line-height: 1.5; margin: 0; white-space: pre-line; }
+    .controls { padding-top: 1px; }
+    .controls[hidden], [hidden] { display: none !important; }
+    .control-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 15px; }
+    label { font-size: 13px; color: #d3ded7; }
+    button { border: 1px solid #70868a; background: transparent; color: #f3e6cc; padding: 10px 16px; font-size: 13px; border-radius: 2px; cursor: pointer; min-height: 44px; }
+    button:hover { background: #20363e; }
+    button:focus-visible, input:focus-visible { outline: 2px solid #f4cc88; outline-offset: 5px; }
+    input[type=range] { width: 100%; margin: 0; height: 44px; accent-color: #edc68b; cursor: pointer; }
+    .scale { display: flex; justify-content: space-between; font-size: 11px; color: #bac8c7; }
+    .motion-note { font-size: 12px; color: #bac8c7; line-height: 1.6; margin-top: 18px; }
+    footer { border-top: 1px solid #334c54; margin-top: 28px; padding-top: 20px; font-size: 11px; color: #bac8c7; display: flex; justify-content: space-between; gap: 16px; line-height: 1.7; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    @media (max-width: 650px) {
+      .below { grid-template-columns: 1fr; gap: 12px; padding-top: 24px; }
+      .poem { min-height: 145px; }
+      .folio { display: none; }
+      figcaption { top: 12px; left: 14px; font-size: 9px; }
+      footer { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header><span class="eyebrow">A small place to be</span><span class="folio">No. 01 / the fjord</span></header>
+  <h1>Night crossing.</h1>
+  <p class="intro">Nothing to finish. Just the distance between two shores.</p>
+  <figure>
+    <svg viewBox="0 0 1200 540" role="img" aria-labelledby="scene-title scene-description">
+      <title id="scene-title">A ferry crossing a quiet fjord</title>
+      <desc id="scene-description">Layered blue mountains, a small moon and a warm cabin light. Use the crossing slider below to move from midnight to morning.</desc>
+      <defs>
+        <linearGradient id="sky" x2="0" y2="1"><stop id="sky-top" stop-color="#102532"/><stop id="sky-bottom" offset="1" stop-color="#52676a"/></linearGradient>
+        <linearGradient id="sea" x2="0" y2="1"><stop id="sea-top" stop-color="#24434c"/><stop id="sea-bottom" offset="1" stop-color="#102933"/></linearGradient>
+        <linearGradient id="glimmer" x2="0" y2="1"><stop stop-color="#e6c68d" stop-opacity=".35"/><stop offset="1" stop-color="#e6c68d" stop-opacity="0"/></linearGradient>
+      </defs>
+      <rect width="1200" height="540" fill="url(#sky)"/>
+      <g id="stars" fill="#f0e3c5" opacity=".8">
+        <circle cx="105" cy="103" r="1.6"/><circle cx="216" cy="62" r="1"/><circle cx="321" cy="134" r="1.2"/>
+        <circle cx="429" cy="45" r="1.4"/><circle cx="573" cy="93" r="1"/><circle cx="668" cy="36" r="1.3"/>
+        <circle cx="803" cy="122" r="1.3"/><circle cx="993" cy="53" r="1"/><circle cx="1128" cy="114" r="1.5"/>
+        <circle cx="79" cy="182" r="1"/><circle cx="498" cy="166" r="1"/><circle cx="735" cy="174" r="1"/>
+      </g>
+      <circle id="moon" cx="926" cy="112" r="22" fill="#e3debe"/>
+      <circle id="sun" cx="679" cy="316" r="30" fill="#f1ce9d" opacity="0"/>
+      <path id="far-ridge" d="M0 253 82 219 158 240 247 163 303 188 365 145 452 242 512 221 575 250 658 208 720 230 801 162 876 198 957 150 1026 206 1092 180 1200 228V360H0Z" fill="#3b5661"/>
+      <path d="m247 163 56 25 62-43-30 54-28-3-26 17Z m554-1 75 36-37-10-21 11-29-16Z m156-12 69 56-39-14-23-14-32 18Z" fill="#a0aeaa" opacity=".25"/>
+      <path id="left-ridge" d="M0 126 55 175 94 167 167 253 206 244 261 285 344 303 426 335H0Z" fill="#183842"/>
+      <path id="right-ridge" d="m1200 98-69 65-51 12-79 84-63-13-67 53-95 37h424Z" fill="#19363f"/>
+      <path d="m1200 98-69 65-51 12 29 12 38-11 27-34Z" fill="#a0aeaa" opacity=".18"/>
+      <rect y="333" width="1200" height="207" fill="url(#sea)"/>
+      <path id="light-path" d="m676 338 12 0 47 202H627Z" fill="url(#glimmer)" opacity="0"/>
+      <g stroke="#9ab0ad" stroke-width="1" opacity=".18" fill="none">
+        <path d="M0 354h167m28 0h86m66 0h104m77 0h162m38 0h49m32 0h137m31 0h125"/>
+        <path d="M72 378h128m28 0h55m77 0h181m91 0h77m32 0h173m41 0h147"/>
+        <path d="M0 412h93m46 0h173m28 0h71m95 0h131m73 0h55m51 0h147m67 0h140"/>
+        <path d="M42 463h145m64 0h113m57 0h56m47 0h158m96 0h68m41 0h149m60 0h104"/>
+        <path d="M0 516h126m85 0h198m87 0h121m83 0h144m61 0h156m69 0h70"/>
+      </g>
+      <g id="ferry" transform="translate(170 385)">
+        <path d="M-79 19h69m-90 6h87m-57 5h52" stroke="#b5c4ba" opacity=".32" fill="none"/>
+        <path d="M9 26h67l16 33H-7Z" fill="url(#glimmer)" opacity=".5"/>
+        <path d="M-6 10h107l-15 14H8Z" fill="#0a2029"/>
+        <path d="M14-10h54l14 20H9Z" fill="#80918d"/>
+        <path d="M21-6h12v10H21Zm18 0h12v10H39Zm18 0h9l6 10H57Z" fill="#efd098"/>
+        <path d="M43-10v-24m0 8h19" fill="none" stroke="#bcc4ae" stroke-width="2"/>
+        <circle cx="43" cy="-35" r="2" fill="#f6d99c"/>
+        <path d="M0 10h98" stroke="#bdbaa1" stroke-width="2"/>
+      </g>
+      <g fill="#edd19d"><circle cx="1031" cy="330" r="1.6"/><circle cx="1041" cy="329" r="1.2"/><circle cx="1050" cy="331" r="1.6"/></g>
+      <path d="M0 490 56 482 93 497 144 500 174 516 222 520 260 540H0Z" fill="#0b2029"/>
+    </svg>
+    <figcaption id="scene-label">01 — Leaving the lights</figcaption>
+  </figure>
+  <div class="below">
+    <section class="poem" aria-label="Crossing poem">
+      <p class="chapter" id="chapter">01 / Departure</p>
+      <p class="verse" id="verse">The last house leaves its light on.
+Not for us, necessarily.
+Still, it helps.</p>
+    </section>
+    <section class="controls" id="controls" aria-label="Explore the crossing" hidden>
+      <div class="control-heading">
+        <label for="crossing">Choose a moment</label>
+        <button type="button" id="play">Let it cross</button>
+      </div>
+      <input type="range" id="crossing" min="0" max="100" step="1" value="0" aria-valuetext="Departure, midnight">
+      <div class="scale" aria-hidden="true"><span>Midnight</span><span>Morning</span></div>
+      <p class="motion-note" id="motion-note">An unhurried 90 seconds. Or move through it at your own pace.</p>
+    </section>
+  </div>
+  <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p>The ferry is resting here. With JavaScript enabled, you can follow it to morning.</p></noscript>
+  <footer><span>A little experiment in not asking anything of you.</span><span>Made by Sol · No sound, no score, no hurry.</span></footer>
+</main>
+<script>
+(() => {
+  'use strict';
+  const el = id => document.getElementById(id);
+  const chapters = [
+    { title: 'Departure', scene: 'Leaving the lights', time: 'midnight', verse: 'The last house leaves its light on.\nNot for us, necessarily.\nStill, it helps.' },
+    { title: 'Open water', scene: 'Between the shores', time: 'deep night', verse: 'Out here, the dark has room.\nEven the mountains\nput down their names.' },
+    { title: 'The middle', scene: 'A small warm window', time: 'before dawn', verse: 'Someone has left a cup\nbeside the wheel.\nA small, ordinary lighthouse.' },
+    { title: 'First light', scene: 'The colour coming back', time: 'dawn', verse: 'The shore returns in pieces:\na roof, a birch,\nthe blue becoming blue.' },
+    { title: 'Arrival', scene: 'A place to step ashore', time: 'morning', verse: 'No revelation.\nJust a rope thrown neatly\nand someone there to catch it.' }
+  ];
+  const palette = [
+    ['sky-top', '#102532', '#788c9a', 'stop-color'],
+    ['sky-bottom', '#52676a', '#e7bb91', 'stop-color'],
+    ['sea-top', '#24434c', '#8b9f9d', 'stop-color'],
+    ['sea-bottom', '#102933', '#375b6b', 'stop-color'],
+    ['far-ridge', '#3b5661', '#7f8f96', 'fill'],
+    ['left-ridge', '#183842', '#345562', 'fill'],
+    ['right-ridge', '#19363f', '#496570', 'fill']
+  ];
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let progress = 0, running = false, frame = null, lastTime = null, chapter = -1;
+  function blend(a, b, t) {
+    const parts = [1, 3, 5].map(i => Math.round(parseInt(a.slice(i, i + 2), 16) * (1 - t) + parseInt(b.slice(i, i + 2), 16) * t));
+    return `rgb(${parts.join(',')})`;
+  }
+  function render(announce = true) {
+    const t = progress / 100;
+    const dawn = Math.max(0, (t - .25) / .75);
+    for (const [id, a, b, attr] of palette) el(id).setAttribute(attr, blend(a, b, dawn));
+    el('stars').setAttribute('opacity', String(.8 * (1 - dawn)));
+    el('moon').setAttribute('opacity', String(1 - .85 * dawn));
+    el('sun').setAttribute('opacity', String(dawn));
+    el('sun').setAttribute('cy', String(316 - 80 * dawn));
+    el('light-path').setAttribute('opacity', String(dawn));
+    el('ferry').setAttribute('transform', `translate(${170 + 780 * t} ${385 - 29 * t})`);
+    el('crossing').value = String(Math.round(progress));
+    const next = Math.min(4, Math.floor(t * 5));
+    const current = chapters[next];
+    el('crossing').setAttribute('aria-valuetext', `${current.title}, ${current.time}`);
+    if (next !== chapter) {
+      chapter = next;
+      const number = String(next + 1).padStart(2, '0');
+      el('chapter').textContent = `${number} / ${current.title}`;
+      el('verse').textContent = current.verse;
+      el('scene-label').textContent = `${number} — ${current.scene}`;
+      el('scene-description').textContent = `A small ferry on a fjord: ${current.scene.toLowerCase()}, ${current.time}. Layered mountains and a warm cabin light.`;
+      if (announce) el('announcement').textContent = `${current.title}. ${current.verse}`;
+    }
+  }
+  function pause() {
+    running = false;
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    lastTime = null;
+    el('play').textContent = progress >= 100 ? 'Cross again' : 'Let it cross';
+  }
+  function tick(now) {
+    if (!running) return;
+    if (lastTime !== null) progress = Math.min(100, progress + (now - lastTime) / 900);
+    lastTime = now;
+    render();
+    if (progress >= 100) pause();
+    else frame = requestAnimationFrame(tick);
+  }
+  el('play').addEventListener('click', () => {
+    if (running) { pause(); return; }
+    if (reducedMotion.matches) return;
+    if (progress >= 100) progress = 0;
+    running = true;
+    lastTime = null;
+    el('play').textContent = 'Pause crossing';
+    render();
+    frame = requestAnimationFrame(tick);
+  });
+  el('crossing').addEventListener('input', event => {
+    progress = Number(event.target.value);
+    pause();
+    render();
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
+  function motionPreference() {
+    pause();
+    el('play').hidden = reducedMotion.matches;
+    el('motion-note').textContent = reducedMotion.matches
+      ? 'A still crossing. Choose each moment with the slider; arrow keys work too.'
+      : 'An unhurried 90 seconds. Or move through it at your own pace.';
+  }
+  reducedMotion.addEventListener('change', motionPreference);
+  motionPreference();
+  render(false);
+  el('controls').hidden = false;
+})();
+</script>
+</body>
+</html>
